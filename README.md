@@ -1,12 +1,11 @@
 ## greatShop-django
-this is an ecoomerce website used to test a recommandation engine with the variety of application used in most ecomerce websites
-it includes:
-* authentification using django authentification system.
-* catalague 
-* user dashboard
-* cart
-* pass orders
-* chekout
-* admin panel
-
+This is an e-commerce website used to test a recommendation engine with the variety of applications used in most e-commerce websites
+It includes:
+* Identification using Django identification system.
+* Catalog
+* User dashboard
+* Cart
+* Pass order
+* Checkout
+* Admin panel
 
