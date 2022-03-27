@@ -1,0 +1,106 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<!-- ========================= SECTION MAIN ========================= -->
+<section class="section-intro padding-y-sm">
+<div class="container">
+
+<div class="intro-banner-wrap">
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <a href="http://127.0.0.1:8000/store/category/auto-moto/"><img class="d-block w-100" src="{% static 'images/banners/11.jpg' %}" alt="First slide"></a>
+    </div>
+    <div class="carousel-item">
+      <a href="http://127.0.0.1:8000/store/category/produits-pour-bebes/"><img class="d-block w-100" src="{% static 'images/banners/12.png' %}" alt="Second slide"></a>
+    </div>
+    <div class="carousel-item">
+      <a href="http://127.0.0.1:8000/store/category/informatique/"><img class="d-block w-100" src="{% static 'images/banners/13.jpg' %}" alt="Third slide"></a>
+    </div>
+	<div class="carousel-item">
+      <a href="http://127.0.0.1:8000/store/category/electroniques/"><img class="d-block w-100" src="{% static 'images/banners/14.jpg' %}" alt="Third slide"></a>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+</div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION MAIN END// ========================= -->
+
+<!-- ========================= SECTION  ========================= -->
+
+<section class="section-name padding-y-sm">
+<div class="container">
+<header class="section-heading">
+	<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">voir tout</a>
+	<h3 class="section-title">Produits populaires</h3>
+</header><!-- sect-heading -->
+<div class="row">
+   {% for product in products %}
+	<div class="col-md-3">
+		<div class="card card-product-grid">
+			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.image_url }}"> </a>
+			<figcaption class="info-wrap">
+				<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+				<div class="price mt-1">{{ product.price }} TND</div> <!-- price-wrap.// -->
+			</figcaption>
+		</div>
+	</div> <!-- col.// -->
+{% endfor %}
+</div>
+</div>
+</section>
+<!-- ========================= SECTION  END// ========================= -->
+<section class="section-name padding-y-sm">
+<div class="container">
+<header class="section-heading">
+	<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">voir tout</a>
+	{% if section_recommendation %}
+	<h3 class="section-title">Selection pour vous, {{ request.user.first_name}}</h3>
+	{% endif %}
+</header><!-- sect-heading -->
+<div class="row">
+   {% for product in products_recommended %}
+	<div class="col-md-3">
+		<div class="card card-product-grid">
+			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.image_url }}"> </a>
+			<figcaption class="info-wrap">
+				<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+				<div class="price mt-1">{{ product.price }} TND</div> <!-- price-wrap.// -->
+			</figcaption>
+
+		</div>
+	</div> <!-- col.// -->
+{% endfor %}
+</div>
+</div>
+</section>
+
+
+
+
+
+
+</body>
+</html>
+
+{% endblock %}
